@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Elecshop - Frontend Application
+
+A modern Next.js e-commerce frontend with Shadcn UI, Tailwind CSS, and AI-powered features.
+
+## Features
+
+- 🛒 Full shopping cart functionality
+- 🔍 Advanced product search and filtering
+- 👤 User account management
+- 🔒 Authentication with JWT refresh tokens
+- 💳 Payment integration (PayPal & Stripe)
+- 🤖 AI-powered product recommendations
+- 🎨 Modern UI with dark/light mode
+- 📱 Responsive design for all devices
+
+## Prerequisites
+
+- Node.js (v16 or higher)
+- pnpm (preferred package manager)
+- Backend API running
 
 ## Getting Started
 
-First, run the development server:
+### 1. Environment Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Create a `.env.local` file in the frontend directory with the following variables:
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:4000/api/v1
+OPENAI_API_KEY=your_openai_key
+NEXT_PUBLIC_PAYPAL_CLIENT_ID=your_paypal_client_id
+STRIPE_SECRET_KEY=your_stripe_secret_key
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# From the frontend directory
+pnpm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Or from the root directory
+pnpm install
+```
+
+### 3. Run Development Server
+
+```bash
+# Start the development server
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
+
+## Build and Production
+
+### Create Production Build
+
+```bash
+pnpm build
+```
+
+### Start Production Server
+
+```bash
+pnpm start
+```
+
+## Project Structure
+
+```
+src/
+├── app/             # Next.js app router pages
+├── components/      # Reusable UI components
+├── config/          # Application configuration
+├── hooks/           # Custom React hooks
+├── lib/             # Utility functions and libraries
+└── modules/         # Feature modules
+```
+
+## Key Features Implementation
+
+### Authentication
+
+Authentication is handled with JWT tokens and HTTP-only cookies for secure sessions. The frontend stores the access token in memory and uses a refresh token for session persistence.
+
+### Product Management
+
+Products can be browsed, searched, and filtered. Admin users can create and manage products through the admin dashboard.
+
+### Shopping Cart
+
+Cart functionality persists:
+- In local storage for guest users
+- On the backend database for logged-in users
+- Automatically merges when a guest user logs in
+
+### AI Features
+
+The application includes AI-powered features:
+- Product recommendations based on browsing history
+- AI Chat assistant for product inquiries
+- AI-powered product creation tools (admin only)
+
+## Deployment
+
+The frontend is configured for easy deployment on Vercel:
+
+```bash
+vercel
+```
+
+For production deployment:
+
+```bash
+vercel --prod
+```
+
+## Testing
+
+```bash
+# Run tests
+pnpm test
+```
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about Next.js, check out these resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Learn Next.js](https://nextjs.org/learn)
+- [Next.js GitHub Repository](https://github.com/vercel/next.js)

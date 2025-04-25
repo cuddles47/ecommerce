@@ -2,7 +2,7 @@
 
 A full-stack eCommerce platform built with Next.js, Nest.js, and MongoDB, featuring AI-powered product management and modern authentication.
 
-![Elecshop preview image](./apps/web/public/images/preview.png)
+![Elecshop preview image](./apps/frontend/public/images/preview.png)
 
 ## Features 🚀
 
@@ -64,77 +64,100 @@ A full-stack eCommerce platform built with Next.js, Nest.js, and MongoDB, featur
 - Node.js (v16 or higher)
 - pnpm (preferred package manager)
 - MongoDB instance (Docker preferred)
+- OpenAI and Replicate API keys (for AI features)
+- Cloudinary account (for image storage)
 
+### Setting Up the Project
 
-## Running Locally 🖥️
-
-Clone the project
-
-```bash
-git clone https://github.com/NightClover-code/modern-ecommerce.git
-```
-
-Go to the project directory
+1. Clone the project
 
 ```bash
-cd modern-ecommerce
+git clone https://github.com/cuddles47/ecommerce
 ```
 
-Remove remote origin
+2. Navigate to project directory
+
+```bash
+cd ecommerce
+```
+
+3. Remove remote origin (optional)
 
 ```bash
 git remote remove origin
 ```
 
-Install dependencies (root)
+4. Install dependencies (root)
 
 ```bash
 pnpm install
 ```
 
-Add Environment Variables - Client
+### Environment Variables Setup
 
-<details>
-  <summary>Click to expand!</summary>
-  
-  - `NEXT_PUBLIC_API_URL`
-  - `OPENAI_API_KEY`
-  - `NEXT_PUBLIC_PAYPAL_CLIENT_ID`
-  - `STRIPE_SECRET_KEY`
-  - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
-</details>
+#### Frontend (.env.local in apps/frontend)
 
-Add Environment Variables - Server
-
-<details>
-  <summary>Click to expand!</summary>
-
-  - `ALLOWED_ORIGINS`
-  - `PORT`
-  - `JWT_SECRET`
-  - `JWT_ACCESS_SECRET`
-  - `JWT_REFRESH_SECRET`
-  - `CLOUDINARY_CLOUD_NAME`
-  - `CLOUDINARY_API_KEY`
-  - `CLOUDINARY_API_SECRET`
-  - `MONGODB_URI`
-  - `MONGO_USERNAME`
-  - `MONGO_PASSWORD`
-  - `REPLICATE_API_TOKEN`
-  - `OPENAI_API_KEY`
-</details>
-
-Start the server
-
-```bash
-pnpm start:server
+```
+NEXT_PUBLIC_API_URL=http://localhost:4000/api/v1
+OPENAI_API_KEY=your_openai_key
+NEXT_PUBLIC_PAYPAL_CLIENT_ID=your_paypal_client_id
+STRIPE_SECRET_KEY=your_stripe_secret_key
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
 ```
 
-Start the client
+#### Backend (.env in apps/backend)
 
-```bash
-pnpm start:web
 ```
+PORT=4000
+ALLOWED_ORIGINS=http://localhost:3000
+JWT_SECRET=your_jwt_secret
+JWT_ACCESS_SECRET=your_jwt_access_secret
+JWT_REFRESH_SECRET=your_jwt_refresh_secret
+MONGODB_URI=mongodb://localhost:27017/modern-ecommerce
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+REPLICATE_API_TOKEN=your_replicate_api_token
+OPENAI_API_KEY=your_openai_api_key
+```
+
+## Running the Application 🚀
+
+### Start MongoDB with Docker
+```bash
+cd apps/backend
+pnpm start:mongo
+```
+
+### Seed the Database
+```bash
+cd apps/backend
+pnpm seed
+```
+This creates an admin account with email: `admin@example.com` and password: `admin123`, plus sample products and users.
+
+### Start Backend Server
+```bash
+# From root directory
+pnpm dev:server
+# OR from backend directory
+cd apps/backend
+pnpm dev
+```
+
+### Start Frontend
+```bash
+# From root directory
+pnpm dev:web
+# OR from frontend directory
+cd apps/frontend
+pnpm dev
+```
+
+### Access the Application
+- Frontend: [http://localhost:3000](http://localhost:3000)
+- Backend API: [http://localhost:4000/api/v1](http://localhost:4000/api/v1)
+- API Documentation: [http://localhost:4000/api](http://localhost:4000/api)
 
 ## Author
 - [@achrafdev](https://achrafdev.com)
