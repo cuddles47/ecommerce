@@ -4,23 +4,25 @@
   "private": true,
   "packageManager": "pnpm@8.15.4",
   "workspaces": [
-    "client-old",
-    "server",
-    "web"
+    "apps/*",
+    "packages/*",
+    "shared",
+    "web",
+    "server"
   ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "start": "turbo run start",
     "start:server": "turbo run dev --filter=@elecshop/server",
-    "start:client-old": "turbo run dev --filter=@elecshop/client-old",
-    "start:web": "turbo run dev --filter=@elecshop/web",
+    "start:frontend": "turbo run dev --filter=@elecshop/frontend",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "prettier": "^3.4.2",
     "turbo": "^2.3.3"
   }
