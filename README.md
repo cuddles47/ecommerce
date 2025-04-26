@@ -132,7 +132,8 @@ pnpm start:mongo
 ### Seed the Database
 ```bash
 cd apps/backend
-pnpm seed
+pnpm seed -- seed:products
+pnpm seed -- seed:users
 ```
 This creates an admin account with email: `admin@example.com` and password: `admin123`, plus sample products and users.
 

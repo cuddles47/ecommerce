@@ -29,18 +29,18 @@ async function seedUsers() {
     const hashedPassword = await hash('admin123');
     const adminUser = {
       name: 'Admin User',
-      email: 'admin@example.com',
+      email: 'admin@gmail.com',
       password: hashedPassword,
       isAdmin: true,
-      avatar: 'https://i.pravatar.cc/300?u=admin@example.com',
+      avatar: '',
       createdAt: new Date(),
     };
     
     // Insert the admin user first (or check if it already exists)
-    const existingAdmin = await UserModel.findOne({ email: 'admin@example.com' });
+    const existingAdmin = await UserModel.findOne({ email: 'admin@gmail.com' });
     if (!existingAdmin) {
       await UserModel.create(adminUser);
-      console.log('✅ Created admin account with email: admin@example.com and password: admin123');
+      console.log('✅ Created admin account with email: admin@gmail.com and password: admin123');
     } else {
       console.log('✅ Admin account already exists');
     }
