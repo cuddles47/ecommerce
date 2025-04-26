@@ -160,8 +160,6 @@ pnpm dev
 - Backend API: [http://localhost:4000/api/v1](http://localhost:4000/api/v1)
 - API Documentation: [http://localhost:4000/api](http://localhost:4000/api)
 
-## Author
-- [@achrafdev](https://achrafdev.com)
 
 **Thanks for sharing** 🚀
 
